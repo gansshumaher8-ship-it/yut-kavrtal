@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-brand: #ea580c;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply text-slate-800 antialiased;
+  font-family: ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  /* фон задаётся в layout (картинка + overlay), чтобы не перекрывать его */
+  background: transparent;
+}
+
+.container-page {
+  @apply max-w-6xl mx-auto px-4;
+}
+
+.card {
+  @apply bg-white border border-slate-200 rounded-2xl shadow-sm;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center rounded-full bg-brand px-5 py-2.5 text-sm font-medium text-white shadow-md shadow-orange-200 hover:bg-orange-600 transition-colors;
+}
+
+.badge {
+  @apply inline-flex items-center gap-1 rounded-full border px-3 py-1 text-xs font-medium;
+}
+
+.input-field {
+  @apply w-full rounded-xl border border-slate-300 bg-white px-3 py-2 text-sm text-slate-800 outline-none focus:border-brand focus:ring-1 focus:ring-brand;
+}
+
+/* Анимации — fallback для совместимости */
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.5; }
+}
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.animate-pulse { animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+.animate-spin { animation: spin 1s linear infinite; }
+
+/* Анимация секций при скролле */
+[data-animate] {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition: opacity 0.65s ease-out, transform 0.65s ease-out;
+}
+[data-animate].section-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Фоновая картинка на всех страницах */
+.site-bg-image {
+  background: url('/hero-bg.png') center / cover no-repeat;
+  opacity: 0.14;
+}
+
+/* Переливающийся текст в шапке */
+@keyframes shimmer-text {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+.brand-shimmer {
+  background: linear-gradient(
+    90deg,
+    #ea580c,
+    #f59e0b,
+    #f97316,
+    #ea580c,
+    #c2410c
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer-text 4s ease-in-out infinite;
+  font-weight: 600;
+}
+
+/* Анимированный переход при смене страницы (клик по шапке) */
+@keyframes page-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.page-transition-enter {
+  animation: page-enter 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+/* Нижний отступ для кнопки «Позвонить» на мобильных (вырезы, индикатор жестов) */
+.safe-area-pb {
+  padding-bottom: env(safe-area-inset-bottom, 0);
+}

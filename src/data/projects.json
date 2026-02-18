@@ -1,0 +1,15 @@
+[
+  {
+    "id": "leningradskiy-36",
+    "address": "г. Москва, Ленинградский пр-т, д. 36",
+    "metro": "Аэропорт",
+    "price": 16200000,
+    "profit": 18,
+    "status": "sold",
+    "description": "Редевелопмент бывшего фитнес-клуба в формат апарт-отеля. 14 студий с панорамным остеклением и системой умный дом. Объект полностью реализован инвесторам, заселён на 95%.",
+    "images": [
+      "https://images.unsplash.com/photo-1512914890250-353c97c9e7e2?auto=format&fit=crop&w=1400&q=80",
+      "https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=1400&q=80"
+    ]
+  }
+]
